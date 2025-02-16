@@ -1,0 +1,10 @@
+15/02/2025 23:21:28: SQL Exception: Violation of PRIMARY KEY constraint 'PK__Alumnos__C030857455E57543'. Cannot insert duplicate key in object 'dbo.Alumnos'. The duplicate key value is ().
+The statement has been terminated.
+16/02/2025 2:08:19: SQL Exception: String or binary data would be truncated in table 'C:\USERS\JULIA\SOURCE\REPOS\NEWWAVE\NEWWAVE\NEWWAVEDATABASE.MDF.dbo.Alumnos', column 'Sexo'. Truncated value: 'todos los '.
+The statement has been terminated.
+16/02/2025 2:53:27: SQL Exception: Incorrect syntax near 'Dni'.
+16/02/2025 2:57:12: SQL Exception: Invalid column name 'Contador'.
+16/02/2025 3:02:42: SQL Exception: Invalid column name 'Contador'.
+16/02/2025 3:07:23: SQL Exception: Invalid column name 'Contador'.
+16/02/2025 3:09:35: SQL Exception: Invalid column name 'Contador'.
+16/02/2025 3:15:24: SQL Exception: Invalid column name 'Contador'.
