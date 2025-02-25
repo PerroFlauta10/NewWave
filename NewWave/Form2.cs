@@ -10,9 +10,8 @@ namespace NewWave
         {
             InitializeComponent();
         }
-        //
-        // Se ejecuta al presionar el botón de enter en el teclado
-        //
+
+        #region Eventos de Teclado
         private void textNomAlum_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -22,6 +21,17 @@ namespace NewWave
             }
         }
 
+        private void textNomProf_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                BuscarProfesor();
+            }
+        }
+        #endregion
+
+        #region Métodos de Alumnos
         private void BuscarAlumno()
         {
             if (string.IsNullOrWhiteSpace(textNomAlum.Text))
@@ -38,7 +48,74 @@ namespace NewWave
             }
         }
 
-        // Botones con relación a los alumnos:
+        private void LimpiarCamposAlumno()
+        {
+            textDirAlum.Text = "";
+            textDniAlum.Text = "";
+            textNombAlum.Text = "";
+            textApeAlum.Text = "";
+            textTelAlum.Text = "";
+            textEmailAlum.Text = "";
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            richTextBox1.Text = "";
+        }
+
+        private void LoadAlumnosData()
+        {
+            using (NewWaveContext context = new NewWaveContext())
+            {
+                DataTable alumnosTable = context.GetAlumnos();
+                dataAlum.DataSource = alumnosTable;
+            }
+        }
+        #endregion
+
+        #region Métodos de Profesores
+        private void BuscarProfesor()
+        {
+            if (string.IsNullOrWhiteSpace(textNomProf.Text))
+            {
+                MessageBox.Show("El nombre del profesor no puede estar vacío.");
+                return;
+            }
+
+            using (NewWaveContext context = new NewWaveContext())
+            {
+                string nombreProfesor = textNomProf.Text;
+                DataTable profesoresTable = context.BuscarProfesorPorNombre(nombreProfesor);
+                dataAlum.DataSource = profesoresTable;
+            }
+        }
+
+        private void LimpiarCamposProfesor()
+        {
+            textDirProf.Text = "";
+            textDniProf.Text = "";
+            textNombProf.Text = "";
+            textApeProf.Text = "";
+            textTelProf.Text = "";
+            textEmailProf.Text = "";
+            textBoxProf1.Text = "";
+            textBoxProf2.Text = "";
+            textBoxProf3.Text = "";
+            textBoxProf4.Text = "";
+            richTextBoxProf1.Text = "";
+        }
+
+        private void LoadProfesoresData()
+        {
+            using (NewWaveContext context = new NewWaveContext())
+            {
+                DataTable profesoresTable = context.GetProfesores();
+                dataAlum.DataSource = profesoresTable;
+            }
+        }
+        #endregion
+
+        #region Eventos de Botones de Alumnos
         private void butAlum_Click(object sender, EventArgs e)
         {
             groupBoxAlum.Visible = true;
@@ -79,6 +156,7 @@ namespace NewWave
                     context.EliminarAlumnoPorDni(dni);
                 }
             }
+            LoadAlumnosData();
         }
 
         private void bCAncBuscAlum_Click(object sender, EventArgs e)
@@ -103,7 +181,7 @@ namespace NewWave
         {
             if (string.IsNullOrWhiteSpace(textDniAlum.Text))
             {
-                MessageBox.Show("Dni cannot be empty.");
+                MessageBox.Show("El Dni no puede estar vacio.");
                 return;
             }
 
@@ -131,38 +209,6 @@ namespace NewWave
             groupFichaAlum.Visible = false;
             dataAlum.Visible = true;
             LoadAlumnosData();
-        }
-
-        private void LimpiarCamposAlumno()
-        {
-            textDirAlum.Text = "";
-            textDniAlum.Text = "";
-            textNombAlum.Text = "";
-            textApeAlum.Text = "";
-            textTelAlum.Text = "";
-            textEmailAlum.Text = "";
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            richTextBox1.Text = "";
-        }
-
-        private void LoadAlumnosData()
-        {
-            using (NewWaveContext context = new NewWaveContext())
-            {
-                DataTable alumnosTable = context.GetAlumnos();
-                dataAlum.DataSource = alumnosTable;
-            }
-        }
-
-        // Botones de cierre de sesión
-        private void bCerrarSesion_Click(object sender, EventArgs e)
-        {
-            Acceso ActiveForm = new Acceso();
-            ActiveForm.Show();
-            this.Close();
         }
 
         private void bListarAlum_Click(object sender, EventArgs e)
@@ -198,16 +244,19 @@ namespace NewWave
                 dataAlum.Visible = false;
                 groupBoxA.Visible = false;
                 groupFichaAlum.Visible = false;
-            } else 
-               groupBoxAlum.Visible = false;
-           
+            }
+            else
+                groupBoxAlum.Visible = false;
+                groupFichaAlum.Visible = false;
         }
+        #endregion
 
-        // Botones con relación a los profesores:   
+        #region Eventos de Botones de Profesores
         private void butProfesor_Click(object sender, EventArgs e)
         {
             groupBoxAlum.Visible = true;
             groupBoxProf.Visible = true;
+            groupBoxA.Visible = false;
         }
 
         private void bCerrarProf_Click(object sender, EventArgs e)
@@ -220,6 +269,7 @@ namespace NewWave
             }
             else
                 groupBoxProf.Visible = false;
+                groupBoxAlum.Visible = false;
         }
 
         private void bCanBusProf_Click(object sender, EventArgs e)
@@ -253,68 +303,11 @@ namespace NewWave
             groupFichaProf.Visible = false;
         }
 
-        
-        private void LimpiarCamposProfesor()
-        {
-            textDirProf.Text = "";
-            textDniProf.Text = "";
-            textNombProf.Text = "";
-            textApeProf.Text = "";
-            textTelProf.Text = "";
-            textEmailProf.Text = "";
-            textBoxProf1.Text = "";
-            textBoxProf2.Text = "";
-            textBoxProf3.Text = "";
-            textBoxProf4.Text = "";
-            richTextBoxProf1.Text = "";
-        }
-
-        private void LoadProfesoresData()
-        {
-            using (NewWaveContext context = new NewWaveContext())
-            {
-                DataTable profesoresTable = context.GetProfesores();
-                dataAlum.DataSource = profesoresTable;
-            }
-        }
-
-
-        private void textNomProf_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                BuscarProfesor();
-            }
-        }
-
-        private void BuscarProfesor()
-        {
-            if (string.IsNullOrWhiteSpace(textNomProf.Text))
-            {
-                MessageBox.Show("El nombre del profesor no puede estar vacío.");
-                return;
-            }
-
-            using (NewWaveContext context = new NewWaveContext())
-            {
-                string nombreProfesor = textNomProf.Text;
-                DataTable profesoresTable = context.BuscarProfesorPorNombre(nombreProfesor);
-                dataAlum.DataSource = profesoresTable;
-            }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            groupFichaProf.Visible = false;
-
-        }
-
         private void bGuardProf_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textDniProf.Text))
             {
-                MessageBox.Show("Dni cannot be empty.");
+                MessageBox.Show("El D.N.I. no puede estar vacio.");
                 return;
             }
 
@@ -390,5 +383,96 @@ namespace NewWave
         {
             groupFichaProf.Visible = false;
         }
+        #endregion
+
+        #region Eventos de Cierre de Sesión
+        private void bCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Acceso ActiveForm = new Acceso();
+            ActiveForm.Show();
+            this.Close();
+        }
+        #endregion
+
+        #region Eventos de Cursos
+        private void butCurso_Click(object sender, EventArgs e)
+        {
+            groupBoxCurso.Visible = true;
+            groupBoxA.Visible = false;
+        }
+
+        private void bSalirCursos_Click(object sender, EventArgs e)
+        {
+            groupBoxCurso.Visible = false;
+        }
+
+        private void bSalirIngCurso_Click(object sender, EventArgs e)
+        {
+            groupBoxIngCurso.Visible = false;
+        }
+
+        private void bAñaCurso_Click(object sender, EventArgs e)
+        {
+            groupBoxIngCurso.Visible = true;
+        }
+
+        private void bGuardarCurso_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxIdCurso.Text))
+            {
+                MessageBox.Show("El id de curso no puede estar vacio.");
+                return;
+            }
+
+            using (NewWaveContext context = new NewWaveContext())
+            {
+                Curso curso = new Curso
+                {
+                    Id = textBoxIdCurso.Text,
+                    Nombre = textBoxNomCurso.Text,
+                    Duracion = textBoxDur.Text,
+                    FechaInicio = textBox9.Text,
+                    FechaFin = textBox10.Text,
+                    Horario = textBox11.Text,
+                    Precio = textBox12.Text,
+                };
+
+                context.AddCurso(curso);
+            }
+            LimpiarCamposCurso();
+            groupBoxIngCurso.Visible = false;
+            dataAlum.Visible = true;
+            LoadProfesoresData();
+        }
+
+        private void LimpiarCamposCurso()
+        {
+            textBoxIdCurso.Text = "";
+            textBoxNomCurso.Text = "";
+            textBoxDur.Text = "";
+            textBox9.Text = "";
+            textBox10.Text = "";
+            textBox11.Text = "";
+            textBox12.Text = "";
+        }
+
+        #endregion
+
+       
+        private void LoadCursosData()
+        {
+            using (NewWaveContext context = new NewWaveContext())
+            {
+                DataTable CursosTable = context.GetCursos();
+                dataCurso.DataSource = CursosTable;
+            }
+        }
+
+        private void bListarCurso_Click(object sender, EventArgs e)
+        {
+             dataCurso.Visible = true;
+             LoadCursosData();           
+        }
     }
 }
+

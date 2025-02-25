@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxMen = new System.Windows.Forms.GroupBox();
             this.butCurso = new System.Windows.Forms.Button();
             this.butProfesor = new System.Windows.Forms.Button();
             this.butAlum = new System.Windows.Forms.Button();
             this.groupBoxAlum = new System.Windows.Forms.GroupBox();
+            this.dataAlum = new System.Windows.Forms.DataGridView();
             this.groupFichaAlum = new System.Windows.Forms.GroupBox();
             this.bSalFicha = new System.Windows.Forms.Button();
             this.bGuardAlum = new System.Windows.Forms.Button();
@@ -104,15 +107,45 @@
             this.bVaciarBase = new System.Windows.Forms.Button();
             this.bCerrarDataAlum = new System.Windows.Forms.Button();
             this.bCerrarAlum = new System.Windows.Forms.Button();
-            this.dataAlum = new System.Windows.Forms.DataGridView();
             this.bCerrarSesion = new System.Windows.Forms.Button();
+            this.groupBoxCurso = new System.Windows.Forms.GroupBox();
+            this.dataCurso = new System.Windows.Forms.DataGridView();
+            this.bListarCurso = new System.Windows.Forms.Button();
+            this.bAñaCurso = new System.Windows.Forms.Button();
+            this.groupBoxIngCurso = new System.Windows.Forms.GroupBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.bSalirIngCurso = new System.Windows.Forms.Button();
+            this.bGuardarCurso = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBoxDur = new System.Windows.Forms.TextBox();
+            this.textBoxNomCurso = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBoxIdCurso = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.bSalirCursos = new System.Windows.Forms.Button();
+            this.newWaveDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.newWaveDataSet = new NewWave.NewWaveDataSet();
+            this.newWaveDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxMen.SuspendLayout();
             this.groupBoxAlum.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAlum)).BeginInit();
             this.groupFichaAlum.SuspendLayout();
             this.groupFichaProf.SuspendLayout();
             this.groupBoxProf.SuspendLayout();
             this.groupBoxA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataAlum)).BeginInit();
+            this.groupBoxCurso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataCurso)).BeginInit();
+            this.groupBoxIngCurso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.newWaveDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newWaveDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newWaveDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMen
@@ -131,6 +164,7 @@
             resources.ApplyResources(this.butCurso, "butCurso");
             this.butCurso.Name = "butCurso";
             this.butCurso.UseVisualStyleBackColor = true;
+            this.butCurso.Click += new System.EventHandler(this.butCurso_Click);
             // 
             // butProfesor
             // 
@@ -151,14 +185,30 @@
             // groupBoxAlum
             // 
             resources.ApplyResources(this.groupBoxAlum, "groupBoxAlum");
+            this.groupBoxAlum.Controls.Add(this.dataAlum);
             this.groupBoxAlum.Controls.Add(this.groupFichaAlum);
             this.groupBoxAlum.Controls.Add(this.groupFichaProf);
             this.groupBoxAlum.Controls.Add(this.groupBoxProf);
             this.groupBoxAlum.Controls.Add(this.groupBoxA);
-            this.groupBoxAlum.Controls.Add(this.dataAlum);
             this.groupBoxAlum.ForeColor = System.Drawing.Color.White;
             this.groupBoxAlum.Name = "groupBoxAlum";
             this.groupBoxAlum.TabStop = false;
+            // 
+            // dataAlum
+            // 
+            this.dataAlum.AllowUserToOrderColumns = true;
+            this.dataAlum.BackgroundColor = System.Drawing.Color.White;
+            this.dataAlum.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataAlum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataAlum.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataAlum.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            resources.ApplyResources(this.dataAlum, "dataAlum");
+            this.dataAlum.Name = "dataAlum";
+            this.dataAlum.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataAlum.RowTemplate.DefaultCellStyle.NullValue = null;
+            this.dataAlum.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dataAlum.RowTemplate.Height = 28;
+            this.dataAlum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // groupFichaAlum
             // 
@@ -647,22 +697,6 @@
             this.bCerrarAlum.UseVisualStyleBackColor = true;
             this.bCerrarAlum.Click += new System.EventHandler(this.bCerrarAlum_Click);
             // 
-            // dataAlum
-            // 
-            this.dataAlum.AllowUserToOrderColumns = true;
-            this.dataAlum.BackgroundColor = System.Drawing.Color.White;
-            this.dataAlum.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataAlum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataAlum.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataAlum.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            resources.ApplyResources(this.dataAlum, "dataAlum");
-            this.dataAlum.Name = "dataAlum";
-            this.dataAlum.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dataAlum.RowTemplate.DefaultCellStyle.NullValue = null;
-            this.dataAlum.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dataAlum.RowTemplate.Height = 28;
-            this.dataAlum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            // 
             // bCerrarSesion
             // 
             resources.ApplyResources(this.bCerrarSesion, "bCerrarSesion");
@@ -670,19 +704,199 @@
             this.bCerrarSesion.UseVisualStyleBackColor = true;
             this.bCerrarSesion.Click += new System.EventHandler(this.bCerrarSesion_Click);
             // 
+            // groupBoxCurso
+            // 
+            this.groupBoxCurso.Controls.Add(this.dataCurso);
+            this.groupBoxCurso.Controls.Add(this.bListarCurso);
+            this.groupBoxCurso.Controls.Add(this.bAñaCurso);
+            this.groupBoxCurso.Controls.Add(this.groupBoxIngCurso);
+            this.groupBoxCurso.Controls.Add(this.bSalirCursos);
+            this.groupBoxCurso.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.groupBoxCurso, "groupBoxCurso");
+            this.groupBoxCurso.Name = "groupBoxCurso";
+            this.groupBoxCurso.TabStop = false;
+            // 
+            // dataCurso
+            // 
+            this.dataCurso.BackgroundColor = System.Drawing.Color.White;
+            this.dataCurso.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataCurso.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataCurso.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
+            resources.ApplyResources(this.dataCurso, "dataCurso");
+            this.dataCurso.Name = "dataCurso";
+            this.dataCurso.RowTemplate.Height = 28;
+            // 
+            // bListarCurso
+            // 
+            this.bListarCurso.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.bListarCurso, "bListarCurso");
+            this.bListarCurso.Name = "bListarCurso";
+            this.bListarCurso.UseVisualStyleBackColor = true;
+            this.bListarCurso.Click += new System.EventHandler(this.bListarCurso_Click);
+            // 
+            // bAñaCurso
+            // 
+            this.bAñaCurso.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.bAñaCurso, "bAñaCurso");
+            this.bAñaCurso.Name = "bAñaCurso";
+            this.bAñaCurso.UseVisualStyleBackColor = true;
+            this.bAñaCurso.Click += new System.EventHandler(this.bAñaCurso_Click);
+            // 
+            // groupBoxIngCurso
+            // 
+            this.groupBoxIngCurso.Controls.Add(this.label35);
+            this.groupBoxIngCurso.Controls.Add(this.label34);
+            this.groupBoxIngCurso.Controls.Add(this.label33);
+            this.groupBoxIngCurso.Controls.Add(this.label32);
+            this.groupBoxIngCurso.Controls.Add(this.textBox12);
+            this.groupBoxIngCurso.Controls.Add(this.textBox11);
+            this.groupBoxIngCurso.Controls.Add(this.textBox10);
+            this.groupBoxIngCurso.Controls.Add(this.textBox9);
+            this.groupBoxIngCurso.Controls.Add(this.bSalirIngCurso);
+            this.groupBoxIngCurso.Controls.Add(this.bGuardarCurso);
+            this.groupBoxIngCurso.Controls.Add(this.label27);
+            this.groupBoxIngCurso.Controls.Add(this.textBoxDur);
+            this.groupBoxIngCurso.Controls.Add(this.textBoxNomCurso);
+            this.groupBoxIngCurso.Controls.Add(this.label24);
+            this.groupBoxIngCurso.Controls.Add(this.textBoxIdCurso);
+            this.groupBoxIngCurso.Controls.Add(this.label23);
+            this.groupBoxIngCurso.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.groupBoxIngCurso, "groupBoxIngCurso");
+            this.groupBoxIngCurso.Name = "groupBoxIngCurso";
+            this.groupBoxIngCurso.TabStop = false;
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.Name = "label35";
+            // 
+            // label34
+            // 
+            resources.ApplyResources(this.label34, "label34");
+            this.label34.Name = "label34";
+            // 
+            // label33
+            // 
+            resources.ApplyResources(this.label33, "label33");
+            this.label33.Name = "label33";
+            // 
+            // label32
+            // 
+            resources.ApplyResources(this.label32, "label32");
+            this.label32.Name = "label32";
+            // 
+            // textBox12
+            // 
+            resources.ApplyResources(this.textBox12, "textBox12");
+            this.textBox12.Name = "textBox12";
+            // 
+            // textBox11
+            // 
+            resources.ApplyResources(this.textBox11, "textBox11");
+            this.textBox11.Name = "textBox11";
+            // 
+            // textBox10
+            // 
+            resources.ApplyResources(this.textBox10, "textBox10");
+            this.textBox10.Name = "textBox10";
+            // 
+            // textBox9
+            // 
+            resources.ApplyResources(this.textBox9, "textBox9");
+            this.textBox9.Name = "textBox9";
+            // 
+            // bSalirIngCurso
+            // 
+            this.bSalirIngCurso.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.bSalirIngCurso, "bSalirIngCurso");
+            this.bSalirIngCurso.Name = "bSalirIngCurso";
+            this.bSalirIngCurso.UseVisualStyleBackColor = true;
+            this.bSalirIngCurso.Click += new System.EventHandler(this.bSalirIngCurso_Click);
+            // 
+            // bGuardarCurso
+            // 
+            this.bGuardarCurso.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.bGuardarCurso, "bGuardarCurso");
+            this.bGuardarCurso.Name = "bGuardarCurso";
+            this.bGuardarCurso.UseVisualStyleBackColor = true;
+            this.bGuardarCurso.Click += new System.EventHandler(this.bGuardarCurso_Click);
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // textBoxDur
+            // 
+            resources.ApplyResources(this.textBoxDur, "textBoxDur");
+            this.textBoxDur.Name = "textBoxDur";
+            // 
+            // textBoxNomCurso
+            // 
+            resources.ApplyResources(this.textBoxNomCurso, "textBoxNomCurso");
+            this.textBoxNomCurso.Name = "textBoxNomCurso";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
+            // textBoxIdCurso
+            // 
+            resources.ApplyResources(this.textBoxIdCurso, "textBoxIdCurso");
+            this.textBoxIdCurso.Name = "textBoxIdCurso";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // bSalirCursos
+            // 
+            this.bSalirCursos.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.bSalirCursos, "bSalirCursos");
+            this.bSalirCursos.Name = "bSalirCursos";
+            this.bSalirCursos.UseVisualStyleBackColor = true;
+            this.bSalirCursos.Click += new System.EventHandler(this.bSalirCursos_Click);
+            // 
+            // newWaveDataSetBindingSource
+            // 
+            this.newWaveDataSetBindingSource.DataSource = this.newWaveDataSet;
+            this.newWaveDataSetBindingSource.Position = 0;
+            // 
+            // newWaveDataSet
+            // 
+            this.newWaveDataSet.DataSetName = "NewWaveDataSet";
+            this.newWaveDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // newWaveDataSetBindingSource1
+            // 
+            this.newWaveDataSetBindingSource1.DataSource = this.newWaveDataSet;
+            this.newWaveDataSetBindingSource1.Position = 0;
+            // 
             // Form2
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Controls.Add(this.bCerrarSesion);
+            this.Controls.Add(this.groupBoxCurso);
             this.Controls.Add(this.groupBoxAlum);
+            this.Controls.Add(this.bCerrarSesion);
             this.Controls.Add(this.groupBoxMen);
             this.Name = "Form2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBoxMen.ResumeLayout(false);
             this.groupBoxAlum.ResumeLayout(false);
             this.groupBoxAlum.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAlum)).EndInit();
             this.groupFichaAlum.ResumeLayout(false);
             this.groupFichaAlum.PerformLayout();
             this.groupFichaProf.ResumeLayout(false);
@@ -691,7 +905,13 @@
             this.groupBoxProf.PerformLayout();
             this.groupBoxA.ResumeLayout(false);
             this.groupBoxA.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataAlum)).EndInit();
+            this.groupBoxCurso.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataCurso)).EndInit();
+            this.groupBoxIngCurso.ResumeLayout(false);
+            this.groupBoxIngCurso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.newWaveDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newWaveDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newWaveDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -776,5 +996,30 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button bSalFichaProf;
         private System.Windows.Forms.Button butCurso;
+        private System.Windows.Forms.GroupBox groupBoxCurso;
+        private System.Windows.Forms.Button bSalirCursos;
+        private System.Windows.Forms.GroupBox groupBoxIngCurso;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textBoxIdCurso;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBoxNomCurso;
+        private System.Windows.Forms.TextBox textBoxDur;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button bSalirIngCurso;
+        private System.Windows.Forms.Button bGuardarCurso;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.BindingSource newWaveDataSetBindingSource;
+        private NewWaveDataSet newWaveDataSet;
+        private System.Windows.Forms.Button bAñaCurso;
+        private System.Windows.Forms.Button bListarCurso;
+        private System.Windows.Forms.BindingSource newWaveDataSetBindingSource1;
+        private System.Windows.Forms.DataGridView dataCurso;
     }
 }

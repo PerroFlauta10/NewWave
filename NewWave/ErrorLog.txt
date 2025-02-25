@@ -8,3 +8,30 @@ The statement has been terminated.
 16/02/2025 3:07:23: SQL Exception: Invalid column name 'Contador'.
 16/02/2025 3:09:35: SQL Exception: Invalid column name 'Contador'.
 16/02/2025 3:15:24: SQL Exception: Invalid column name 'Contador'.
+18/02/2025 14:26:23: SQL Exception: Invalid object name 'Cursos'.
+18/02/2025 14:37:08: SQL Exception: Invalid object name 'Cursos'.
+18/02/2025 14:44:26: SQL Exception: Invalid object name 'Cursos'.
+18/02/2025 14:48:26: SQL Exception: Invalid column name 'Id'.
+Invalid column name 'Duracion'.
+Invalid column name 'Precio'.
+Invalid column name 'Horario'.
+19/02/2025 15:47:52: SQL Exception: Invalid column name 'Id'.
+Invalid column name 'Duracion'.
+Invalid column name 'Precio'.
+Invalid column name 'Horario'.
+19/02/2025 16:48:56: SQL Exception: Invalid column name 'Id'.
+Invalid column name 'Duracion'.
+Invalid column name 'Precio'.
+Invalid column name 'Horario'.
+19/02/2025 17:23:12: SQL Exception: Invalid column name 'Id'.
+Invalid column name 'Duracion'.
+Invalid column name 'Precio'.
+Invalid column name 'Horario'.
+22/02/2025 20:00:52: SQL Exception: Invalid column name 'Id'.
+Invalid column name 'Duracion'.
+Invalid column name 'Precio'.
+Invalid column name 'Horario'.
+24/02/2025 13:30:46: SQL Exception: Violation of PRIMARY KEY constraint 'PK__Cursos__3214EC075D679BF9'. Cannot insert duplicate key in object 'dbo.Cursos'. The duplicate key value is (123).
+The statement has been terminated.
+24/02/2025 13:42:45: SQL Exception: Violation of PRIMARY KEY constraint 'PK__Profesor__C03085742A207CB5'. Cannot insert duplicate key in object 'dbo.Profesores'. The duplicate key value is (12345678M).
+The statement has been terminated.
